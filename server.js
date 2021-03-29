@@ -32,7 +32,7 @@ app.use(errorHandler)
 const PORT = process.env.PORT || 4000;
 
 const server = app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV} mode on PORT ${PORT}`.yellow.bold)
+  console.log(`Server running in ${process.env.NODE_ENV} mode on PORT ${PORT}`.blue.bold)
 })
 
 // Handle unhandled rejections
