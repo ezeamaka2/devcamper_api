@@ -14,6 +14,8 @@ dotenv.config({path: './config/config.env'})
 connectDB()
 // Routes files
 const bootcampRoute = require('./routes/bootcamps')
+const courseRoute = require('./routes/courses')
+
 
 const app = express()
 
@@ -27,6 +29,7 @@ if(process.env.NODE_ENV === 'Developement'){
 
 // Mount route files
 app.use('/api/v1/bootcamps', bootcampRoute)
+app.use('/api/v1/courses', courseRoute)
 app.use(errorHandler)
 
 const PORT = process.env.PORT || 4000;
