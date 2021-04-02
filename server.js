@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express');
 const dotenv = require('dotenv')
 const morgan = require('morgan')
@@ -16,6 +17,7 @@ connectDB()
 // Routes files
 const bootcampRoute = require('./routes/bootcamps')
 const courseRoute = require('./routes/courses')
+const authRoute = require('./routes/auth')
 
 
 const app = express()
@@ -31,9 +33,13 @@ if(process.env.NODE_ENV === 'Developement'){
 // Fileupload
 app.use(fileUpload())
 
+// Set the public folder as a static folder
+app.use(express.static(path.join(__dirname, 'public')))
+
 // Mount route files
 app.use('/api/v1/bootcamps', bootcampRoute)
 app.use('/api/v1/courses', courseRoute)
+app.use('/api/v1/auth', authRoute)
 app.use(errorHandler)
 
 const PORT = process.env.PORT || 4000;
